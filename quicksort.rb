@@ -15,9 +15,20 @@ class Array
 	end
 end
 
-# 测试
+# 测试from wiki的方法是否正确
 puts [3, 1, 9, 2, 7, -1].quicksort == [-1, 1, 2, 3, 7, 9]
 puts [5, -5, 11, 0, 3].quicksort == [-5, 0, 3, 5, 11]
 
-b = ((1..100).to_a + (20..80).to_a).shuffle.sample(19)
+require "json"
+
+# 生成数据
+# b = (1..10000).to_a.shuffle.sample(10000)
+# f = File.open("data.json", "w") { |f|  
+# 	f.syswrite(b.to_json)
+# }
+
+# 读取数据
+f = File.open("data.json","r")
+b = JSON.parse(f.read)
+
 puts b.quick_sort! == b.quicksort
